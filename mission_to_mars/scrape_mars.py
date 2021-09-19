@@ -96,7 +96,6 @@ def scrape():
 
 
     mars_df=mars_table[0]
-    mars_df.columns=["Description","Values"]
     html_mars_df = mars_df.to_html()
     html_mars_df
     browser.quit()
