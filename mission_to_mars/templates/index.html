@@ -8,14 +8,14 @@
     <title>Mars Scrape</title>
     <!-- <link rel="stylesheet" href="static/reset.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
-            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            <p><a class="btn btn-primary btn-lg" href="../scrape_mars" role="button">Scrape New Data</a></p>
         </div>
         <div class='row'>
             <div class='col-md-12'>
@@ -24,10 +24,10 @@
                         <strong>Latest Mars News</strong>
                     </h1>
                     <p class='title'>
-                        <strong>{{scrape_mars.art_title}}</strong>
+                        <strong>{{scrape_mars.mars_title}}</strong>
                     </p>
                     <p class='paragraph'>
-                        {{scrape_mars.mars_p}}
+                        {{scrape_mars.mars_paragraph}}
                     </p>
                 </div>
 
@@ -50,37 +50,22 @@
         </div>
 
     </div>
-    <div class='container-fluid'>
-        <div class='jumbotron text-center'>
-            <h1>
-                <strong>Mars Hemispheres</strong>
-            </h1>
-            <hr>
-        </div>
-        <div class='row'>
-            <div class='col-md-6'>
-                <div class="mars_image">
-                    <img src="{{scrape_mars.hemisphere_image_urls[0]['img_url']}}" alt="First_image" width="800px" height="800px">
-                    <h2>{{scrape_mars.hemisphere_image_urls[0]['title']}}</h2>
-                </div>
-                <div class="mars_image">
-                    <img src="{{scrape_mars.hemisphere_image_urls[1]['img_url']}}" alt="Second_image" width="800px" height="800px">
-                    <h2>{{scrape_mars.hemisphere_image_urls[1]['title']}}</h2>
-                </div>
-            </div>
-            <div class='col-md-6'>
-                <div class="mars_image">
-                    <img src="{{scrape_mars.hemisphere_image_urls[2]['img_url']}}" alt="Third_image" width="800px" height="800px">
-                    <h2>{{scrape_mars.hemisphere_image_urls[2]['title']}}</h2>
-                </div>
-                <div class="mars_image">
-                    <img src="{{scrape_mars.hemisphere_image_urls[3]['img_url']}}" alt="Fourth_image" width="800px" height="800px">
-                    <h2>{{scrape_mars.hemisphere_image_urls[3]['title']}}</h2>
-                </div>
-            </div>
+    <div class ="row" id="mars-hemispheres">
+        <div class = "col-md-12">
+            <h3><center>Mars Hemispheres</center></h3>
 
-        </div>
+            {% for hemisphere in mars.mars_hemispheres %}
+                <div class = "col-md-6">
+                    <div class = "thumbnail">
+                        <img src = "{{hemisphere.image_url}}">
+                            <h3>{{hemisphere.title}}</h3>
+                        </div>
+                    </div>
+            {% endfor %}
+                </div>
 
+        
+        </div>
     </div>
 </body>
 
